@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            margin: 20px;
+            text-align: center;
+        }
+        .info-item {
+            margin-bottom: 20px;
+        }
+        .info-item img {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+            display: block;
+        }
+        .info-item i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        .info-item p {
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #e5c100;
+        }
+        .menu {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .menu-links {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .menu-links a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .code-container p {
+            margin: 0;
+            color: #FFD700;
+            font-size: 14px;
+            font-family: monospace;
+            word-wrap: break-word;
+        }
+        .copy-icon {
+            cursor: pointer;
+            color: #FFD700;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        .copy-icon:hover {
+            color: #e5c100;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu-links">
+        <a href="#">Página Inicial</a>
+        <a href="#">Perfil</a>
+        <a href="#">Configurações</a>
+    </div>
+    <div class="container">
+        <div class="info-item">
+            <i class="fas fa-qrcode"></i>
+            <img id="qr-code-img" src="" alt="QR Code">
+        </div>
+        <div class="info-item">
+            <i class="fas fa-clipboard"></i>
+            <div class="code-container">
+                <p id="copy-paste"></p>
+                <i class="fas fa-copy copy-icon" onclick="copyToClipboard()"></i>
+            </div>
+        </div>
+        <button class="button" onclick="verificarPagamento()">Verificar Pagamento</button>
+        <i class="fas fa-copy copy-icon" onclick="copyToClipboard()"></i>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menuLinks = document.querySelector('.menu-links');
+            menuLinks.style.display = menuLinks.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Extrair a URL de pagamento dos parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const qrCode = urlParams.get('qr_code');
+        const copyPaste = urlParams.get('copy_paste');
+
+        if (qrCode) {
+            const qrCodeImg = document.getElementById('qr-code-img');
+            qrCodeImg.src = `data:image/png;base64,${qrCode}`;
+        }
+
+        if (copyPaste) {
+            const copyPasteElement = document.getElementById('copy-paste');
+            copyPasteElement.textContent = copyPaste;
+        }
+
+        async function verificarPagamento() {
+    // Fazer uma chamada ao servidor para verificar o status do pagamento
+    try {
+        const response = await fetch('/enviar-creditos');
+        const data = await response.json();
+
+        if (data.status === 'approved') {
+            window.location.href = 'https://nooxhosting.cloud';
+        } else {
+            alert('Pagamento ainda não aprovado. Por favor, aguarde.');
+        }
+    } catch (error) {
+        console.error('Erro ao verificar pagamento:', error);
+        alert('Erro ao verificar pagamento. Por favor, tente novamente mais tarde.');
+    }
+}
+
+function copyToClipboard() {
+    const copyText = document.getElementById('copy-paste');
+    const textArea = document.createElement('textarea');
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('Copiado para a área de transferência!');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        html {
+    background: url(https://i.imgur.com/1hyDy2D.jpeg) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-weight: bold;
+            color: #fff;
+            animation: shake 1s infinite;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .home-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="message">Oops! A página que você está tentando acessar não exite.</div>
+        <a href="/" class="home-button">Voltar</a>
+    </div>
+</body>
+</html>

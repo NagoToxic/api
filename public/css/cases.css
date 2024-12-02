@@ -1,0 +1,78 @@
+html {
+    background: url(https://i.imgur.com/1hyDy2D.jpeg) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.nome {
+  color: white;
+  font-family: Arial, Monospace;
+  font-size: 100px;
+}
+
+.image {
+  border: solid white 2px;
+  border-radius:50%;
+  width: 200px;
+  height: 200px;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.botao {
+  margin-top: 20px;
+  align-items: center;
+}
+.boga {
+  text-decoration: none;
+  background-color: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  border: solid 1px white;
+  border-radius: 5px;
+  color: #fff;
+  width: 600px;
+  height: 100px;
+  max-width: 500px;
+  margin-top: 20px;
+  font-size: 50px;
+}
+
+a {
+  text-decoration: none;
+  color:#000;
+  font-size: 25px;
+}
+
+.comando {
+  background-color: #222;
+  width: 600px;
+  height: 500px;
+  border: solid 1px #393939;
+  border-radius: 5px;
+}
+
+.case {
+  color: orange;
+  margin: 10px 20px 10px 20px;
+  font-size: 40px;
+}
+
+.send {
+  color:#fff;
+  margin: 10px 20px 10px 20px;
+  font-size: 30px;
+}
+
+.fim {
+  color: orange;
+  margin: 10px 20px 10px 20px;
+  font-size: 40px;
+}

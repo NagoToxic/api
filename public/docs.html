@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome da api</title>
+    <style>
+        html {
+            background: url(https://i.imgur.com/1hyDy2D.jpeg) no-repeat center center fixed;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: none;
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.75s ease;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .start-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .start-button:hover {
+            background-color: white;
+            color: #000;
+            border-color: white;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background-color: white;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Bem-vindo ao meu site de apis!</h1>
+        <button class="start-button" onclick="startLoading()">Entrar</button>
+    </div>
+
+    <div class="snow"></div>
+
+    <script>
+        function startLoading() {
+            window.location.href = "/carregamento.html";
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            snowflake.style.opacity = Math.random();
+            snowflake.style.transform = `scale(${Math.random()})`;
+            document.querySelector('.snow').appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 200);
+    </script>
+</body>
+</html>

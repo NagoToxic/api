@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Nome do site</title>
+</head>
+<body>
+ <audio autoplay>
+    <source src="https://firebasestorage.googleapis.com/v0/b/anime-dea80.appspot.com/o/AUD-20231019-WA0265.mp3?alt=media&token=33c0d694-3820-475a-9ab4-31f968a28cdb" type="audio/mp3">
+</audio>
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+<div class="sidebar" id="sidebar">
+  <h1 class="menu-title">MENU</h1>
+        <ul class="nav">
+            <li>
+                <a onclick="toggleMenu('ui-downloads')">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-download"></i>
+                    </span>
+                    <span class="menu-title">DOWNLOADS</span>
+                    <i class="menu-arrow mdi mdi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="ui-downloads">
+                    <ul class="nav flex-column sub-menu">
+                        <li><a href="download/play-mp3?&nome=brocasito&apitoken=SeuToken">• Play Audio</a></li>
+                        <li><a href="download/play-mp4?&nome=brocasito&apitoken=SeuToken">• Play Video</a></li>
+                        <li><a href="/api/mediafire?url=https://www.mediafire.com/file/39o3dijk4tqyk2f/Acode_base.apk/file&apitoken=SeuToken">• Mediafire</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+                <ul class="nav">
+            <li>
+                <a onclick="toggleMenu('ui-canvas')">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-image"></i>
+                    </span>
+                    <span class="menu-title">CANVAS</span>
+                    <i class="menu-arrow mdi mdi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="ui-canvas">
+                    <ul class="nav flex-column sub-menu">
+                        <li><a href="sticker/aleatorio?apitoken=SeuToken">• Stickers</a></li>
+                        <li><a href="/api/pinterest?text=gato&apitoken=SeuToken">• Pinterest</a></li>
+                        <li><a href="/api/wallpaper?apitoken=SeuToken">• Wallpaper</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <ul class="nav">
+            <li>
+                <a onclick="toggleMenu('ui-pesquisa')">
+                    <span class="menu-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <span class="menu-title">PESQUISAS</span>
+                    <i class="menu-arrow mdi mdi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="ui-pesquisa">
+                    <ul class="nav flex-column sub-menu">
+                        <li><a href="#">• Yt-search</a></li>
+                        <li><a href="#">• Google-search</a></li>
+                        <li><a href="/api/insta-stalk?query=samsung&apitoken=SeuToken">• Ig-stalk</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+                <ul class="nav">
+            <li>
+                <a onclick="toggleMenu('ui-inteligence')">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-robot"></i>
+                    </span>
+                    <span class="menu-title">IAS</span>
+                    <i class="menu-arrow mdi mdi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="ui-inteligence">
+                    <ul class="nav flex-column sub-menu">
+                        <li><a href="/ias/bing?pesquisa=javascript&apitoken=SeuToken">• Bing</a></li>
+                        <li><a href="/ias/gpt?query=em%20ano%20estamos&apitoken=SeuToken">• Chat Gpt</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <ul class="nav">
+            <li>
+                <a onclick="toggleMenu('ui-generator')">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-table-edit"></i>
+                    </span>
+                    <span class="menu-title">GERADORES</span>
+                    <i class="menu-arrow mdi mdi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="ui-generator">
+                    <ul class="nav flex-column sub-menu">
+                        <li><a href="/geradores/fazernick?nome=GIULIAN&apitoken=SeuToken">• Gerar Nick</a></li>
+                        <li><a href="/geradores/criar-email?apitoken=SeuToken">• Email Temp</a></li>
+                        <li><a href="/geradores/ler-email?apitoken=SeuToken&domain=domain&login=login&id=id-email">• Ler Email</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="content" id="content">
+        <h1 class="titulo">Bem-vindo!</h1>
+        <p class="texto">Esta é uma base de site que esta sendo desenvolvido.</p>
+        <div class="cards">
+          <center>
+            <h1 class="titulo">HORA</h1>
+            <div class="hora" id="horario"></div>
+          <h2 class="mensagem" id="mensagem"></h2>
+          </center>
+        </div>
+        <div class="cards">
+          <center>
+          <h1 class="titulo">GRUPO</h1>
+          <h2 class="mensagem">Venha fazer parte da nossa comunidade.</h2>
+          <a class="botao" href="#">Entrar</a>
+          <br>
+          <br>
+          </center>
+        </div>
+        <div class="cards">
+          <center>
+          <h1 class="titulo">PLANOS</h1>
+          <h2 class="mensagem">Selecioneno plano que melhor se encaixa no seu bolso.</h2>
+          <a class="botao" href="/planos">PLANOS</a>
+          <br>
+          <br>
+          </center>
+        </div>
+        <div class="cards">
+          <center>
+            <h1 class="titulo">CASES</h1>
+            <p class="mensagem">cases prontas para facilitar o uso da api.</p>
+            <a class="botao" href="/pack">Pegar</a>
+            <br>
+            <br>
+          </center>
+        </div>
+        <div class="cards">
+          <form action="/api/keyerrada">
+          <center>
+            <h1 class="titulo">VERIFICAR KEY</h1>
+            <input type="username" placeholder="digite sua key" name="apitoken" required>
+            <br>
+            <br>
+            <button type="submit" class="btn">🔎 Verificar 🔍</a>
+            <br>
+            <br>
+          </center>
+          </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('content').classList.toggle('active');
+        }
+        function toggleMenu(id) {
+            const collapseElement = document.getElementById(id);
+            collapseElement.classList.toggle('active');
+        }
+        function atualizarHorario() {
+            const agora = new Date();
+            const horas = agora.getHours();
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            const segundos = String(agora.getSeconds()).padStart(2, '0');
+            const horarioFormatado = `${String(horas).padStart(2, '0')}:${minutos}:${segundos}`;
+            document.getElementById('horario').textContent = horarioFormatado;
+
+            let mensagem = '';
+            if (horas >= 5 && horas < 12) {
+                mensagem = 'Bom dia!';
+            } else if (horas >= 12 && horas < 18) {
+                mensagem = 'Boa tarde!';
+            } else {
+                mensagem = 'Boa noite!';
+            }
+
+            document.getElementById('mensagem').textContent = mensagem;
+        }
+
+        setInterval(atualizarHorario, 1000);
+
+        atualizarHorario();
+        
+    </script>
+
+</body>
+</html>

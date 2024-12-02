@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Estilo externo -->
+    <title>Planos</title>
+</head>
+<body>
+  <center>
+    <h1 class="titulo">Escolha seu Plano</h1>
+    </center>
+    <div class="cards">
+      <center>
+      <h3>Plano Basic - R$5</h3>
+      </center>
+      <br>
+      <p class="mensagem">✅ ApiToken Limitado a "5.000" requests.</p>
+      <p class="mensagem">✅ Grupo de Clientes.</p>
+      <p class="mensagem">✅ Pack de Cases.</p>
+      <p class="mensagem">❎ Suporte.</p>
+      <center>
+        <br>
+      <input type="text" id="apiKey" placeholder="Digite sua chave" required>
+      <br><br>
+      <button onclick="createPayment(5)" class="bot">PAGAR</button>
+      <br>
+      <br>
+      </center>
+    </div>
+        <div class="cards">
+      <center>
+      <h3>Plano Pró - R$10</h3>
+      </center>
+      <br>
+      <p class="mensagem">✅ ApiToken Limitado a "10.000" requests.</p>
+      <p class="mensagem">✅ Grupo de Clientes.</p>
+      <p class="mensagem">✅ Pack de Cases.</p>
+      <p class="mensagem">❎ Suporte.</p>
+     <center>
+        <br>
+      <input type="text" id="apiKey" placeholder="Digite sua chave" required>
+      <br><br>
+      <button onclick="createPayment(10)" class="bot">PAGAR</button>
+      <br>
+      <br>
+      </center>
+    </div>
+        <div class="cards">
+      <center>
+      <h3>Plano King - R$20</h3>
+      </center>
+      <br>
+      <p class="mensagem">✅ ApiToken Limitado a "20.000" requests.</p>
+      <p class="mensagem">✅ Grupo de Clientes.</p>
+      <p class="mensagem">✅ Pack de Cases.</p>
+      <p class="mensagem">✅ Suporte.</p>
+      <center>
+        <br>
+      <input type="text" id="apiKey" placeholder="Digite sua chave" required>
+      <br><br>
+      <button onclick="createPayment(20)" class="bot">PAGAR</button>
+      <br>
+      <br>
+      </center>
+    </div>
+        <div class="cards">
+      <center>
+      <h3>Plano Master - R$30</h3>
+      </center>
+      <br>
+      <p class="mensagem">✅ ApiToken Limitado a "30.000" requests.</p>
+      <p class="mensagem">✅ Grupo de Clientes.</p>
+      <p class="mensagem">✅ Pack de Cases.</p>
+      <p class="mensagem">✅ Suporte.</p>
+      <center>
+        <br>
+      <input type="text" id="apiKey" placeholder="Digite sua chave" required>
+      <br><br>
+      <button onclick="createPayment(30)" class="bot">PAGAR</button>
+      <br>
+      <br>
+      </center>
+    </div>
+        <div class="cards">
+      <center>
+      <h3>Plano Adm - R$150</h3>
+      </center>
+      <br>
+      <p class="mensagem">✅ ApiToken Limitado a requests ilimitados.</p>
+      <p class="mensagem">✅ Grupo de Clientes.</p>
+      <p class="mensagem">✅ Pack de Cases.</p>
+      <p class="mensagem">✅ Suporte.</p>
+      <p class="mensagem">✅  Arquivo da base da api.</p>
+      <center>
+        <br>
+      <input type="text" id="apiKey" placeholder="Digite sua chave" required>
+      <br><br>
+      <button onclick="createPayment(5)" class="bot">PAGAR</button>
+      <br>
+      <br>
+      </center>
+    </div>
+    <div id="paymentStatus"></div>
+
+    <!-- Div para exibir o QR Code -->
+    
+    <div id="qrCodeContainer" style="display:none;">
+    <center>
+        <h3>QR Code para pagamento:</h3>
+        <img id="qrCodeImage" src="" alt="QR Code" style="width: 200px; height: 200px;"/>
+        <br>
+        <button class="btn" onclick="confirmPayment()">Já Paguei</button>
+        </center>
+    </div>
+    
+  </center>
+
+  <script>
+    async function createPayment(amount) {
+        const apiKey = document.getElementById('apiKey').value; // Obtendo a chave da API
+
+        if (!apiKey) {
+            alert('Por favor, digite sua chave.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/create_payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: amount })
+            });
+
+            const paymentInfo = await response.json();
+
+            // Exibir QR Code
+            if (paymentInfo.qr_code) {
+    document.getElementById('qrCodeImage').src = `data:image/png;base64,${paymentInfo.qr_code}`;
+    document.getElementById('qrCodeContainer').style.display = 'block'; // Mostrar o QR Code
+}
+        } catch (error) {
+            console.error('Erro ao processar o pagamento:', error);
+            alert('Erro ao processar pagamento');
+        }
+    }
+
+    async function confirmPayment() {
+        const apiKey = document.getElementById('apiKey').value;
+        // Aqui você pode implementar a lógica para validar o pagamento.
+        // Por exemplo, você poderia fazer uma chamada para o endpoint de verificação de pagamento
+
+        // Para exemplo, adicione uma chamada fictícia
+        try {
+            const response = await fetch(`/api/add-key?a=${apiKey}&senha=K23`, {
+                method: 'GET'
+            });
+
+            const result = await response.json();
+            document.getElementById('paymentStatus').innerText = result.resultado; // Exibir resultado
+        } catch (error) {
+            console.error('Erro ao validar pagamento:', error);
+            alert('Erro ao validar pagamento');
+        }
+    }
+  </script>
+</body>
+</html>

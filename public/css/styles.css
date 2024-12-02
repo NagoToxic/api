@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: url(https://i.imgur.com/1hyDy2D.jpeg) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.cards {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-top: 40px;
+    border: solid 1px white;
+    border-radius: 5px;
+    color: white;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.titulo {
+    color: white;
+}
+
+.mensagem {
+  color: white;
+  margin-left:20px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+input {
+  text-align: center;
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+  border: solid white 1px;
+  border-radius: 2px;
+}
+
+.btn {
+  background-color: blue;
+  color: #fff;
+  border: solid 1px white;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.bot {
+  background-color: blue;
+  color: #fff;
+  border: solid 1px white;
+  border-radius: 5px;
+  width: 180px;
+  height: 30px;
+  font-size: 20px;
+}
+
+#qrCodeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Fixa na tela */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo levemente transparente */
+    z-index: 1000; /* Certifique-se de que está acima de outros elementos */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra ao redor */
+}
